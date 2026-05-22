@@ -1,0 +1,143 @@
+body {
+  margin: 0;
+  text-align: center;
+  font-family: "Space Grotesk", sans-serif;
+  color: #e6e6e6;
+
+  /* 🌊 FLAGS OF FREEDOM BACKGROUND */
+  background-image: url("assets/aot.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+/* ⚫ CINEMATIC OVERLAY (MOST IMPORTANT PART) */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 10, 30, 0.60);
+  z-index: -1;
+}
+
+/* ⚡ BOOT INTRO */
+.boot {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  background: #000;
+  color: #00e5ff;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  font-family: monospace;
+  z-index: 9999;
+
+  animation: bootFade 4s forwards;
+}
+
+.boot-text {
+  opacity: 0;
+  animation: fadeIn 1s forwards;
+}
+
+.boot-text:nth-child(1) { animation-delay: 0.5s; }
+.boot-text:nth-child(2) { animation-delay: 1.2s; }
+.boot-text:nth-child(3) { animation-delay: 2s; }
+
+/* MAIN */
+.main {
+  opacity: 0;
+  animation: show 1s forwards;
+  animation-delay: 4s;
+
+  padding: 30px;
+}
+
+/* 👤 PROFILE */
+.profile-pic {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  object-fit: cover;
+
+  border: 2px solid #00e5ff;
+  box-shadow: 0 0 15px #00e5ff;
+
+  filter: contrast(1.1) brightness(0.9);
+}
+
+/* ⚡ GLITCH NAME */
+.glitch {
+  position: relative;
+  font-family: "Cinzel", serif;
+  font-size: 2.5rem;
+}
+
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.glitch::before {
+  color: #ff003c;
+  animation: glitch1 0.8s infinite;
+}
+
+.glitch::after {
+  color: #00e5ff;
+  animation: glitch2 0.8s infinite;
+}
+
+/* TEXT */
+.roles {
+  letter-spacing: 2px;
+}
+
+.bio {
+  max-width: 600px;
+  margin: auto;
+}
+
+/* BUTTON */
+.click-btn {
+  margin-top: 20px;
+  padding: 12px 18px;
+  background: #ff003c;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+/* ANIMATIONS */
+@keyframes bootFade {
+  0% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { opacity: 0; visibility: hidden; }
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+@keyframes show {
+  to { opacity: 1; }
+}
+
+@keyframes glitch1 {
+  0% { transform: translate(0); }
+  50% { transform: translate(-2px, 2px); }
+  100% { transform: translate(0); }
+}
+
+@keyframes glitch2 {
+  0% { transform: translate(0); }
+  50% { transform: translate(2px, -2px); }
+  100% { transform: translate(0); }
+}
